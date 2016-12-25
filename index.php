@@ -1,11 +1,15 @@
 <?php
 
-// 定数とself:: 
-// 初乗り料金のを追加
-
+// コンストラクタ
+// インスタンス化した際に最初に呼び出される関数
 class Car
 {
 	public $gasoline = 30; 
+
+	public function __construct($gasoline)
+	{
+		$this->gasoline = $gasoline;
+	}
 
 	public function go()
 	{
@@ -45,19 +49,10 @@ class Taxi extends Car
 
 }
 
-$myTaxi = new Taxi;
+$myTaxi = new Taxi(50);
 
 $myTaxi->go();
-$myTaxi->go();
-$myTaxi->go();
 
-$myTaxi->checkout();
+$myTaxi2 = new Taxi(20);
 
-
-$myTaxi->go();
-$myTaxi->go();
-$myTaxi->go();
-$myTaxi->go();
-$myTaxi->go();
-
-$myTaxi->checkout();
+echo $myTaxi2->gasoline;
