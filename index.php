@@ -1,6 +1,6 @@
 <?php
 
-// クラスの継承 
+// オーバーライド 
 
 class Car
 {
@@ -27,11 +27,20 @@ class Car
 
 class Taxi extends Car
 {
+	public $fare;
+	
+	public function go()
+	{
+		parent::go();
+		$this->fare += 90;
+	}
 
 }
 
 $myTaxi = new Taxi;
 
-// echo $myTaxi->gasoline;
 $myTaxi->go();
-$myTaxi->supply(5);
+$myTaxi->go();
+$myTaxi->go();
+
+echo '現在の運賃は' . $myTaxi->fare . '円です';
