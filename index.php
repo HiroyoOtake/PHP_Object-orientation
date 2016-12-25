@@ -1,6 +1,6 @@
 <?php
 
-// メソッド = クラス内で宣言された関数 
+// クラスの継承 
 
 class Car
 {
@@ -25,11 +25,13 @@ class Car
 	}
 }
 
-$myCar = new Car;
-
-for ($i = 0; $i < 50; $i++)
+class Taxi extends Car
 {
-	$myCar->go();
+
 }
 
-$myCar->supply(10);
+$myTaxi = new Taxi;
+
+// echo $myTaxi->gasoline;
+$myTaxi->go();
+$myTaxi->supply(5);
