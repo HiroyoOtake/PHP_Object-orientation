@@ -1,6 +1,7 @@
 <?php
 
-// オーバーライド 
+// 定数とself:: 
+// 初乗り料金のを追加
 
 class Car
 {
@@ -27,7 +28,8 @@ class Car
 
 class Taxi extends Car
 {
-	public $fare;
+	const STARTING_FARE = 730;
+	public $fare = self::STARTING_FARE;
 	
 	public function go()
 	{
