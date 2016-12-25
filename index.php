@@ -1,14 +1,22 @@
 <?php
 
-// クラスを宣言 → インスタンス化
+// メソッド = クラス内で宣言された関数 
 
 class Car
 {
-	public $gasoline = 30; // プロパティ(メンバ変数)
+	public $gasoline = 30; 
+
+	public function go()
+	{
+		echo '車が走りました!!';
+		$this->gasoline--;
+		echo '残りのガソリンは' . $this->gasoline . 'Lです<br>';
+	}
 }
 
 $myCar = new Car;
-// Car というクラス(設計図)をもとにして
-// myCarというインスタンス(実体)をつくった
 
-echo $myCar->gasoline;
+for ($i = 0; $i < 50; $i++)
+{
+	$myCar->go();
+}
