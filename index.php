@@ -1,10 +1,13 @@
 <?php
 
-// コンストラクタ
-// インスタンス化した際に最初に呼び出される関数
+// アクセス権について
+// public:    どこからでもアクセスできる
+// private:   そのクラス自身からのみアクセスできる
+// protected: そのクラス自身と継承したクラス、親クラスからのみアクセスできる
+
 class Car
 {
-	public $gasoline = 30; 
+	protected $gasoline = 30; 
 
 	public function __construct($gasoline)
 	{
@@ -33,7 +36,7 @@ class Car
 class Taxi extends Car
 {
 	const STARTING_FARE = 730;
-	public $fare = self::STARTING_FARE;
+       private	$fare = self::STARTING_FARE;
 	
 	public function go()
 	{
@@ -52,7 +55,12 @@ class Taxi extends Car
 $myTaxi = new Taxi(50);
 
 $myTaxi->go();
+// $myTaxi->gasoline = 0;
 
-$myTaxi2 = new Taxi(20);
+$myTaxi->go();
+$myTaxi->go();
 
-echo $myTaxi2->gasoline;
+// $myTaxi->fare = 0;
+
+$myTaxi->checkout();
+
