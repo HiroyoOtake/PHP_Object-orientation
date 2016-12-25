@@ -1,9 +1,7 @@
 <?php
-
-// アクセス権について
-// public:    どこからでもアクセスできる
-// private:   そのクラス自身からのみアクセスできる
-// protected: そのクラス自身と継承したクラス、親クラスからのみアクセスできる
+// static(静的)なプロパティとメソッドについて
+// インスタンス化しなくても呼び出せる
+// タクシーの生産台数(インスタンスの数)を調べる
 
 class Car
 {
@@ -36,7 +34,20 @@ class Car
 class Taxi extends Car
 {
 	const STARTING_FARE = 730;
-       private	$fare = self::STARTING_FARE;
+	private	$fare = self::STARTING_FARE;
+
+	public static $numberOfTaxis = 0;
+
+	public function __construct($gasoline)
+	{
+		$this->gasoline = $gasoline;
+		self::$numberOfTaxis++;
+	}
+
+	public static function countTaxis()
+	{
+		echo 'タクシーの生産台数は' . self::$numberOfTaxis . '台です<br>';
+	}
 	
 	public function go()
 	{
@@ -52,15 +63,10 @@ class Taxi extends Car
 
 }
 
-$myTaxi = new Taxi(50);
+// echo Taxi::$numberOfTaxis;
 
-$myTaxi->go();
-// $myTaxi->gasoline = 0;
+$myTaxi1 = new Taxi(50);
+$myTaxi2 = new Taxi(50);
+$myTaxi3 = new Taxi(50);
 
-$myTaxi->go();
-$myTaxi->go();
-
-// $myTaxi->fare = 0;
-
-$myTaxi->checkout();
-
+Taxi::countTaxis();
