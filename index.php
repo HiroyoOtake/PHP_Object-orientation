@@ -37,6 +37,12 @@ class Taxi extends Car
 		$this->fare += 90;
 	}
 
+	public function checkout()
+	{
+		echo 'お会計は' . $this->fare . '円です<br>';
+		$this->fare = self::STARTING_FARE;
+	}
+
 }
 
 $myTaxi = new Taxi;
@@ -45,4 +51,13 @@ $myTaxi->go();
 $myTaxi->go();
 $myTaxi->go();
 
-echo '現在の運賃は' . $myTaxi->fare . '円です';
+$myTaxi->checkout();
+
+
+$myTaxi->go();
+$myTaxi->go();
+$myTaxi->go();
+$myTaxi->go();
+$myTaxi->go();
+
+$myTaxi->checkout();
